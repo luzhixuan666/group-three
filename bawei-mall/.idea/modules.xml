@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall.iml" filepath="$PROJECT_DIR$/bawei-mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart.iml" filepath="$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-common1/bawei-mall-cart-common1.iml" filepath="$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-common1/bawei-mall-cart-common1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-remote1/bawei-mall-cart-remote1.iml" filepath="$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-remote1/bawei-mall-cart-remote1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-server/bawei-mall-cart-server.iml" filepath="$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-server/bawei-mall-cart-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order.iml" filepath="$PROJECT_DIR$/bawei-mall-order/bawei-mall-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-common/bawei-mall-order-common.iml" filepath="$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-common/bawei-mall-order-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-remote/bawei-mall-order-remote.iml" filepath="$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-remote/bawei-mall-order-remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-server/bawei-mall-order-server.iml" filepath="$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-server/bawei-mall-order-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay.iml" filepath="$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-common/bawei-mall-pay-common.iml" filepath="$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-common/bawei-mall-pay-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-remote/bawei-mall-pay-remote.iml" filepath="$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-remote/bawei-mall-pay-remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-server/bawei-mall-pay-server.iml" filepath="$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-server/bawei-mall-pay-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product.iml" filepath="$PROJECT_DIR$/bawei-mall-product/bawei-mall-product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-cache/bawei-mall-product-cache.iml" filepath="$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-cache/bawei-mall-product-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-common/bawei-mall-product-common.iml" filepath="$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-common/bawei-mall-product-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-remote/bawei-mall-product-remote.iml" filepath="$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-remote/bawei-mall-product-remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-server/bawei-mall-product-server.iml" filepath="$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-server/bawei-mall-product-server.iml" />
+    </modules>
+  </component>
+</project>

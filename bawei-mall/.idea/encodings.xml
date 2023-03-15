@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-common1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-common1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-remote1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-remote1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-cart/bawei-mall-cart-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-remote/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-remote/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-order/bawei-mall-order-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-remote/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-remote/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-pay/bawei-mall-pay-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-cache/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-cache/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-remote/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-remote/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bawei-mall-product/bawei-mall-product-server/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

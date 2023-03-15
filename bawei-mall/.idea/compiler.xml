@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="bawei-mall-product-common" />
+        <module name="bawei-mall-order-common" />
+        <module name="bawei-mall-pay-remote" />
+        <module name="bawei-mall-pay-common" />
+        <module name="bawei-mall-cart-common1" />
+        <module name="bawei-mall-order-remote" />
+        <module name="bawei-mall-product-cache" />
+        <module name="bawei-mall-product-remote" />
+        <module name="bawei-mall-cart-server" />
+        <module name="bawei-mall-cart-remote1" />
+        <module name="bawei-mall-pay-server" />
+        <module name="bawei-mall-product-server" />
+        <module name="bawei-mall-order-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bawei-mall" target="1.8" />
+      <module name="bawei-mall-cart" target="1.8" />
+      <module name="bawei-mall-cart-common1" target="1.8" />
+      <module name="bawei-mall-cart-remote1" target="1.8" />
+      <module name="bawei-mall-cart-server" target="1.8" />
+      <module name="bawei-mall-order" target="1.8" />
+      <module name="bawei-mall-order-common" target="1.8" />
+      <module name="bawei-mall-order-remote" target="1.8" />
+      <module name="bawei-mall-order-server" target="1.8" />
+      <module name="bawei-mall-pay" target="1.8" />
+      <module name="bawei-mall-pay-common" target="1.8" />
+      <module name="bawei-mall-pay-remote" target="1.8" />
+      <module name="bawei-mall-pay-server" target="1.8" />
+      <module name="bawei-mall-product" target="1.8" />
+      <module name="bawei-mall-product-cache" target="1.8" />
+      <module name="bawei-mall-product-common" target="1.8" />
+      <module name="bawei-mall-product-remote" target="1.8" />
+      <module name="bawei-mall-product-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
