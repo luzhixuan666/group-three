@@ -1,0 +1,16 @@
+com\bawei\mall\product\domain\request\RuleRequest.class
+com\bawei\mall\product\domain\MallProductReviewInfo.class
+com\bawei\mall\product\domain\model\RuleModel.class
+com\bawei\mall\product\domain\MallProductSkuInfo$MallProductSkuInfoBuilder.class
+com\bawei\mall\product\domain\MallProductRuleInfo.class
+com\bawei\mall\product\domain\MallProductSkuInfo.class
+com\bawei\mall\product\domain\MallProductBrandInfo.class
+com\bawei\mall\product\domain\model\RuleAttrModel.class
+com\bawei\mall\product\domain\MallProductTypeInfo.class
+com\bawei\mall\product\domain\MallProductInfo.class
+com\bawei\mall\product\domain\reponse\ProductInfoResponse.class
+com\bawei\mall\product\domain\request\ProductInfoRequest.class
+com\bawei\mall\product\domain\model\SkuModel.class
+com\bawei\mall\product\domain\model\ProductModel.class
+com\bawei\mall\product\domain\reponse\ProductDetailsResponse.class
+com\bawei\mall\product\domain\MallProductRuleAttrInfo.class

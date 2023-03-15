@@ -1,0 +1,33 @@
+# Tomcat
+server:
+  port: 9338
+
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: mall-pay
+  profiles:
+    # 环境配置
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 106.14.46.21:8848
+      config:
+        # 配置中心地址
+        server-addr: 106.14.46.21:8848
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - application-redisson-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  rabbitmq:
+    host: 106.14.46.21
+alipay:
+  appId: 2021000122620906
+  appPrivateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC3oYwnWMZYme4WDj2/A3wp/GUIGyWX/y4ip9459TPSGEaY8qa9Ff9BUhcHcOgq/yyA0Ts+SZ4My9O7r6LDuBds/t3yFnUiuqP3Olnqls/SdKF8hUluRyt4mQZtxXHcdwmA/Fp297Z68huxYJwo5hl3NIA3MAVeyaFMHw/OlNtqbnHuktY5zDqGVz+JLO/2l95+J7Cn01oAyfxcFtZh65Ve5hUQM7sqw9h3Pa0EV0/UJGPVDO5gFMsdTba2hFMu8UOg8ZC/f6ui3xhj2RSnKS007eygV6lZOdNP2D+LMulc4/zzjF1jRWb+YTKwwwEQbuqKB7ezfJVrmAGMw4cbiGIZAgMBAAECggEAUYRYeFsTad+jbo0R4grFAsp1ezy52pjAPUgyAZ6VS43VQS5u0H/EWZX8fSQlHHk8o06+su7xR5LwQmA8rA+77nnRwxcvFqSuByETK22Zgj6eNW3h5B+Z76ZW0UIWQp1hTa445pkem8OAgaR2jj1fTqiyxkz+BU8S2HztgnJYWQ0/DZ8MImxfl78LRv5gOLlj5ibxDKcRYXw5p5HvxvfzM1TxbsLTF8OHJz/xh357OXEuvt75TyoeKLUAyFFPMqgjboorzzVSFTYFPxwIW2AA2+dyOwYA/1U91ccF60yS+K6lKFtNiZoolilCGFVs/ULx7F8lPS9bS9yBuX8ilLgDAQKBgQDub690fKViiS4CXmN6WoNA4OXx+lUh5HcOumtI6LBsiPfpJis621ZuOncovrj5OSo9niG0OXx0dLD5gDYrGHifsAytrtzFTzudrQJCOXkK5Qtc//7UKji2iNeVu78DYKlcOyluDdbQLxDewm/9olOkB2dfJ9PHs4KUnNKTjcn/IQKBgQDFKF83qjqHGqRlCWe7U4G7LOYrBOMoDANsuzxjHT6yA+xjKML6i8Aadtv2ct1hI46uUpqolyTe0BN0s9hWWusnktUUil2aJVpexCrwmRDUBl9Vuy7ZzOFoJM4a1dz13+qAjv186FcRFUClJxfceCEtnTMob74YBN5jnmPRUQ7b+QKBgQCEGWJ2whwKxH+2Fj886Wqwhik/b/a8iUwg381SnoAoEZZwGJJ40E5JUaD09P2cLjyl2LdJl1PJXWEzSgI4zB0AM9RCYY+0zRn1WIXY1OinzZAHHVk8iIvVLWlrbpH8OBB8pdZlP8uUmY7aK5VKSyXVybhOss0VZfHhjiToVPTloQKBgAo/2gtbxyUk5mz2OzVK1xCy+dg8rc50KW1qom4IpCy+9XgGM3Sw9TCrAy5htE6LeaxoUO/4w4rtyEUl4FZE7bql8Hvb4ZfU30jT6+OMIYrUNfqP+5SJCSLP3wMYIR+LH3bFeDoZHgWeVDkBukTU3eywImu0u24mOqV1I31LOHmJAoGARF6uXr711rnK3dVbwEzQaiJOw6M6ydTTTA4sF6UZKt7MFE7gPYd/CSVtuAPaxao/aAT/yGFvv443MDbfLMIeuMkiGqOaA8A/4D2M5z8KqD9gP4W4hYKr4wzS37OnsndKde7mJO3IcvgDIHC/RjiAI72wWhjhIboOpbnrjl8apzc=
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxoKNTiMdYfNFzewe282XfNF3I0Q/srQtQq8ci2WPrYv0CYWv3A+DxMFfcSnpIOtE4y2YLtY901Y8s6otS6/+qWXiXzoNrxKq0pHWI2rwqybnHT4JAbunvhQN0FqcS7OBVIdH1DBmPNydS+hX5qlx8ZxfNHDLWcR9bB6+a7x5mt2PnZcVVggY4Wn69oxYNcRAkWwhFD8HEVglTcVE40fpQGG0QUmTZIT3ujq7HLG+QT5GjWajEY0eVxPx9MPO2Y+uNAh0+I7/OXa3o+PQp++6vHiicJUpbyOzSh9qKsmZqzy23V8P+FcxAd/5a/oZoveAFxOPwrjUwwxZh6PdFF9/+QIDAQAB
+  notifyUrl: http://hh5isc.natappfree.cc/alipay/notify

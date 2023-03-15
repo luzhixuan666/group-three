@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mall.product.mapper.MallProductReviewInfoMapper">
+
+    <resultMap type="MallProductReviewInfo" id="MallProductReviewInfoResult">
+        <result property="id"    column="id"    />
+        <result property="productId"    column="product_id"    />
+        <result property="productSkuId"    column="product_sku_id"    />
+        <result property="reviewImages"    column="review_images"    />
+        <result property="content"    column="content"    />
+        <result property="start"    column="start"    />
+        <result property="isDispaly"    column="is_dispaly"    />
+        <result property="isDel"    column="is_del"    />
+        <result property="revision"    column="revision"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMallProductReviewInfoVo">
+        select id, product_id, product_sku_id, review_images, content, start, is_dispaly, is_del, revision, create_by, create_time, update_by, update_time from mall_product_review_info
+    </sql>
+
+    <select id="selectMallProductReviewInfoList" parameterType="MallProductReviewInfo" resultMap="MallProductReviewInfoResult">
+        <include refid="selectMallProductReviewInfoVo"/>
+        <where>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="productSkuId != null "> and product_sku_id = #{productSkuId}</if>
+            <if test="start != null "> and start = #{start}</if>
+            <if test="isDel != null  and isDel != ''"> and is_del = #{isDel}</if>
+        </where>
+    </select>
+
+    <select id="selectMallProductReviewInfoById" parameterType="Long" resultMap="MallProductReviewInfoResult">
+        <include refid="selectMallProductReviewInfoVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMallProductReviewInfo" parameterType="MallProductReviewInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into mall_product_review_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">product_id,</if>
+            <if test="productSkuId != null">product_sku_id,</if>
+            <if test="reviewImages != null">review_images,</if>
+            <if test="content != null and content != ''">content,</if>
+            <if test="start != null">start,</if>
+            <if test="isDispaly != null and isDispaly != ''">is_dispaly,</if>
+            <if test="isDel != null and isDel != ''">is_del,</if>
+            <if test="revision != null">revision,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">#{productId},</if>
+            <if test="productSkuId != null">#{productSkuId},</if>
+            <if test="reviewImages != null">#{reviewImages},</if>
+            <if test="content != null and content != ''">#{content},</if>
+            <if test="start != null">#{start},</if>
+            <if test="isDispaly != null and isDispaly != ''">#{isDispaly},</if>
+            <if test="isDel != null and isDel != ''">#{isDel},</if>
+            <if test="revision != null">#{revision},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMallProductReviewInfo" parameterType="MallProductReviewInfo">
+        update mall_product_review_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="productSkuId != null">product_sku_id = #{productSkuId},</if>
+            <if test="reviewImages != null">review_images = #{reviewImages},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
+            <if test="start != null">start = #{start},</if>
+            <if test="isDispaly != null and isDispaly != ''">is_dispaly = #{isDispaly},</if>
+            <if test="isDel != null and isDel != ''">is_del = #{isDel},</if>
+            <if test="revision != null">revision = #{revision},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMallProductReviewInfoById" parameterType="Long">
+        update mall_product_review_info set is_del = 'Y' where id = #{id}
+    </delete>
+
+    <delete id="deleteMallProductReviewInfoByIds" parameterType="String">
+        update mall_product_review_info set is_del = 'Y' where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

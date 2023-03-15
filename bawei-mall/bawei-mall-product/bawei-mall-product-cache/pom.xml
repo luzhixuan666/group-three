@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>bawei-mall-product</artifactId>
+        <groupId>com.bawei</groupId>
+        <version>3.6.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>bawei-mall-product-cache</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--
+      隐藏维护缓存
+      不隐藏维护缓存
+    -->
+    <dependencies>
+        <!-- 系统微服务基准 -->
+        <dependency>
+            <groupId>com.bawei</groupId>
+            <artifactId>bawei-common-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bawei</groupId>
+            <artifactId>bawei-common-lock</artifactId>
+        </dependency>
+
+        <!-- 远程调用 -->
+        <dependency>
+            <groupId>com.bawei</groupId>
+            <artifactId>bawei-mall-product-remote</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>

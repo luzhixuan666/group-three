@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mall.pay.mapper.PayInfoMapper">
+    
+    <resultMap type="PayInfo" id="PayInfoResult">
+        <result property="id"    column="id"    />
+        <result property="orderNumber"    column="order_number"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="payType"    column="pay_type"    />
+        <result property="payTime"    column="pay_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="status"    column="status"    />
+        <result property="payPrice"    column="pay_price"    />
+        <result property="resultJson"    column="result_json"    />
+    </resultMap>
+
+    <sql id="selectPayInfoVo">
+        select id, order_number, create_time, pay_type, pay_time, create_by, status, pay_price, result_json from pay_info
+    </sql>
+
+    <select id="selectPayInfoList" parameterType="PayInfo" resultMap="PayInfoResult">
+        <include refid="selectPayInfoVo"/>
+        <where>  
+            <if test="orderNumber != null  and orderNumber != ''"> and order_number like concat('%', #{orderNumber}, '%')</if>
+            <if test="payType != null  and payType != ''"> and pay_type = #{payType}</if>
+            <if test="params.beginPayTime != null and params.beginPayTime != '' and params.endPayTime != null and params.endPayTime != ''"> and pay_time between #{params.beginPayTime} and #{params.endPayTime}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectPayInfoById" parameterType="Long" resultMap="PayInfoResult">
+        <include refid="selectPayInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPayInfo" parameterType="PayInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into pay_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderNumber != null and orderNumber != ''">order_number,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="payType != null and payType != ''">pay_type,</if>
+            <if test="payTime != null">pay_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="status != null">status,</if>
+            <if test="payPrice != null">pay_price,</if>
+            <if test="resultJson != null">result_json,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderNumber != null and orderNumber != ''">#{orderNumber},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="payType != null and payType != ''">#{payType},</if>
+            <if test="payTime != null">#{payTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="status != null">#{status},</if>
+            <if test="payPrice != null">#{payPrice},</if>
+            <if test="resultJson != null">#{resultJson},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePayInfo" parameterType="PayInfo">
+        update pay_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderNumber != null and orderNumber != ''">order_number = #{orderNumber},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="payType != null and payType != ''">pay_type = #{payType},</if>
+            <if test="payTime != null">pay_time = #{payTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="payPrice != null">pay_price = #{payPrice},</if>
+            <if test="resultJson != null">result_json = #{resultJson},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePayInfoById" parameterType="Long">
+        delete from pay_info where id = #{id}
+    </delete>
+
+    <delete id="deletePayInfoByIds" parameterType="String">
+        delete from pay_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

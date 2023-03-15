@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mall.order.mapper.OrderItemInfoMapper">
+
+    <resultMap type="OrderItemInfo" id="OrderItemInfoResult">
+        <result property="id"    column="id"    />
+        <result property="orderNumber"    column="order_number"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="isPay"    column="is_pay"    />
+        <result property="productId"    column="product_id"    />
+        <result property="productSku"    column="product_sku"    />
+        <result property="unitPrice"    column="unit_price"    />
+        <result property="sumPrice"    column="sum_price"    />
+        <result property="count"    column="count"    />
+        <result property="payPrice"    column="pay_price"    />
+        <result property="status"    column="status"    />
+    </resultMap>
+
+    <sql id="selectOrderItemInfoVo">
+        select id, order_number, order_id, is_pay, product_id, product_sku, unit_price, sum_price, count, pay_price, status from order_item_info
+    </sql>
+
+    <select id="selectOrderItemInfoList" parameterType="OrderItemInfo" resultMap="OrderItemInfoResult">
+        <include refid="selectOrderItemInfoVo"/>
+        <where>
+            <if test="orderNumber != null  and orderNumber != ''"> and order_number = #{orderNumber}</if>
+            <if test="orderId != null "> and order_id = #{orderId}</if>
+            <if test="isPay != null  and isPay != ''"> and is_pay = #{isPay}</if>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="productSku != null  and productSku != ''"> and product_sku = #{productSku}</if>
+            <if test="unitPrice != null "> and unit_price = #{unitPrice}</if>
+            <if test="sumPrice != null "> and sum_price = #{sumPrice}</if>
+            <if test="count != null "> and count = #{count}</if>
+            <if test="payPrice != null "> and pay_price = #{payPrice}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+
+    <select id="selectOrderItemInfoById" parameterType="Long" resultMap="OrderItemInfoResult">
+        <include refid="selectOrderItemInfoVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertOrderItemInfo" parameterType="OrderItemInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into order_item_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderNumber != null">order_number,</if>
+            <if test="orderId != null">order_id,</if>
+            <if test="isPay != null">is_pay,</if>
+            <if test="productId != null">product_id,</if>
+            <if test="productSku != null">product_sku,</if>
+            <if test="unitPrice != null">unit_price,</if>
+            <if test="sumPrice != null">sum_price,</if>
+            <if test="count != null">count,</if>
+            <if test="payPrice != null">pay_price,</if>
+            <if test="status != null">status,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderNumber != null">#{orderNumber},</if>
+            <if test="orderId != null">#{orderId},</if>
+            <if test="isPay != null">#{isPay},</if>
+            <if test="productId != null">#{productId},</if>
+            <if test="productSku != null">#{productSku},</if>
+            <if test="unitPrice != null">#{unitPrice},</if>
+            <if test="sumPrice != null">#{sumPrice},</if>
+            <if test="count != null">#{count},</if>
+            <if test="payPrice != null">#{payPrice},</if>
+            <if test="status != null">#{status},</if>
+         </trim>
+    </insert>
+    <insert id="batchInstallOrderItemInfo">
+        insert into order_item_info(order_number,order_id,is_pay,product_id,product_sku,unit_price,count,sum_price,
+        pay_price,status)
+        values
+        <foreach collection="orderItemInfoList" item="orderItemInfo" index="index" separator=",">
+           (#{orderItemInfo.orderNumber},#{orderItemInfo.orderId},#{orderItemInfo.isPay},
+               #{orderItemInfo.productId},#{orderItemInfo.productSku},
+               #{orderItemInfo.unitPrice}, #{orderItemInfo.sumPrice},
+               #{orderItemInfo.count},#{orderItemInfo.payPrice},#{orderItemInfo.status})
+        </foreach>
+    </insert>
+
+    <update id="updateOrderItemInfo" parameterType="OrderItemInfo">
+        update order_item_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderNumber != null">order_number = #{orderNumber},</if>
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="isPay != null">is_pay = #{isPay},</if>
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="productSku != null">product_sku = #{productSku},</if>
+            <if test="unitPrice != null">unit_price = #{unitPrice},</if>
+            <if test="sumPrice != null">sum_price = #{sumPrice},</if>
+            <if test="count != null">count = #{count},</if>
+            <if test="payPrice != null">pay_price = #{payPrice},</if>
+            <if test="status != null">status = #{status},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteOrderItemInfoById" parameterType="Long">
+        delete from order_item_info where id = #{id}
+    </delete>
+
+    <delete id="deleteOrderItemInfoByIds" parameterType="String">
+        delete from order_item_info where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

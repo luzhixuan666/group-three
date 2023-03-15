@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mall.product.mapper.MallProductSkuInfoMapper">
+
+    <resultMap type="MallProductSkuInfo" id="MallProductSkuInfoResult">
+        <result property="id"    column="id"    />
+        <result property="productId"    column="product_id"    />
+        <result property="sku"    column="sku"    />
+        <result property="stock"    column="stock"    />
+        <result property="price"    column="price"    />
+        <result property="purchasePrice"    column="purchase_price"    />
+        <result property="sellingPrice"    column="selling_price"    />
+        <result property="image"    column="image"    />
+        <result property="number"    column="number"    />
+        <result property="weight"    column="weight"    />
+        <result property="volume"    column="volume"    />
+        <result property="revision"    column="revision"    />
+    </resultMap>
+
+    <sql id="selectMallProductSkuInfoVo">
+        select id, product_id, sku, stock, price, purchase_price, selling_price, image, number, weight, volume, revision from mall_product_sku_info
+    </sql>
+
+    <select id="selectMallProductSkuInfoList" parameterType="MallProductSkuInfo" resultMap="MallProductSkuInfoResult">
+        <include refid="selectMallProductSkuInfoVo"/>
+        <where>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="sku != null  and sku != ''"> and sku = #{sku}</if>
+            <if test="stock != null "> and stock = #{stock}</if>
+            <if test="price != null "> and price = #{price}</if>
+            <if test="purchasePrice != null "> and purchase_price = #{purchasePrice}</if>
+            <if test="sellingPrice != null "> and selling_price = #{sellingPrice}</if>
+            <if test="image != null  and image != ''"> and image = #{image}</if>
+            <if test="number != null  and number != ''"> and number = #{number}</if>
+            <if test="weight != null "> and weight = #{weight}</if>
+            <if test="volume != null "> and volume = #{volume}</if>
+            <if test="revision != null "> and revision = #{revision}</if>
+        </where>
+    </select>
+
+    <select id="selectMallProductSkuInfoById" parameterType="Long" resultMap="MallProductSkuInfoResult">
+        <include refid="selectMallProductSkuInfoVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMallProductSkuInfo" parameterType="MallProductSkuInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into mall_product_sku_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">product_id,</if>
+            <if test="sku != null and sku != ''">sku,</if>
+            <if test="stock != null">stock,</if>
+            <if test="price != null">price,</if>
+            <if test="purchasePrice != null">purchase_price,</if>
+            <if test="sellingPrice != null">selling_price,</if>
+            <if test="image != null and image != ''">image,</if>
+            <if test="number != null and number != ''">number,</if>
+            <if test="weight != null">weight,</if>
+            <if test="volume != null">volume,</if>
+            <if test="revision != null">revision,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">#{productId},</if>
+            <if test="sku != null and sku != ''">#{sku},</if>
+            <if test="stock != null">#{stock},</if>
+            <if test="price != null">#{price},</if>
+            <if test="purchasePrice != null">#{purchasePrice},</if>
+            <if test="sellingPrice != null">#{sellingPrice},</if>
+            <if test="image != null and image != ''">#{image},</if>
+            <if test="number != null and number != ''">#{number},</if>
+            <if test="weight != null">#{weight},</if>
+            <if test="volume != null">#{volume},</if>
+            <if test="revision != null">#{revision},</if>
+         </trim>
+    </insert>
+    <insert id="batchInsertProductSku">
+        INSERT INTO mall_product_sku_info
+            ( `product_id`, `sku`, `stock`, `price`, `purchase_price`,
+             `selling_price`, `image`, `number`, `weight`, `volume`)
+        VALUES
+            <foreach collection="skuInfoList" item="sku" index="index" separator=",">
+                ( #{productId}, #{sku.sku}, #{sku.stock}, #{sku.price}, #{sku.purchasePrice},
+                 #{sku.sellingPrice}, #{sku.image}, #{sku.number}, #{sku.weight}, #{sku.volume}
+                 )
+            </foreach>
+    </insert>
+
+    <update id="updateMallProductSkuInfo" parameterType="MallProductSkuInfo">
+        update mall_product_sku_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="sku != null and sku != ''">sku = #{sku},</if>
+            <if test="stock != null">stock = #{stock},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="purchasePrice != null">purchase_price = #{purchasePrice},</if>
+            <if test="sellingPrice != null">selling_price = #{sellingPrice},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="number != null and number != ''">number = #{number},</if>
+            <if test="weight != null">weight = #{weight},</if>
+            <if test="volume != null">volume = #{volume},</if>
+            <if test="revision != null">revision = #{revision},</if>
+        </trim>
+        where id = #{id}
+    </update>
+    <update id="deductionStock">
+        update mall_product_sku_info set stock=(stock - #{stock})
+        where product_id=#{productId} and sku=#{sku}
+    </update>
+
+    <delete id="deleteMallProductSkuInfoById" parameterType="Long">
+        delete from mall_product_sku_info where id = #{id}
+    </delete>
+
+    <delete id="deleteMallProductSkuInfoByIds" parameterType="String">
+        delete from mall_product_sku_info where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <delete id="deleteMallProductSkuInfoByProductId">
+        delete from mall_product_sku_info where product_id = #{productId}
+    </delete>
+    <delete id="deleteMallProductSkuInfoByProductIds">
+        delete from mall_product_sku_info where product_id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

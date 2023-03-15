@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mall.order.mapper.OrderInfoMapper">
+
+    <resultMap type="OrderInfo" id="OrderInfoResult">
+        <result property="id"    column="id"    />
+        <result property="addressId"    column="address_id"    />
+        <result property="count"    column="count"    />
+        <result property="sumPrice"    column="sum_price"    />
+        <result property="payPrice"    column="pay_price"    />
+        <result property="discountPrice"    column="discount_price"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="status"    column="status"    />
+        <result property="payDeadlineTime"    column="pay_deadline_time"    />
+        <result property="payResult"    column="pay_result"    />
+        <result property="number"    column="number"    />
+    </resultMap>
+
+    <sql id="selectOrderInfoVo">
+        select id, address_id, count, sum_price, pay_price, discount_price, create_time, create_by, status, pay_deadline_time, pay_result, number from order_info
+    </sql>
+
+    <select id="selectOrderInfoList" parameterType="OrderInfo" resultMap="OrderInfoResult">
+        <include refid="selectOrderInfoVo"/>
+        <where>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="payDeadlineTime != null "> and pay_deadline_time = #{payDeadlineTime}</if>
+            <if test="payResult != null  and payResult != ''"> and pay_result = #{payResult}</if>
+            <if test="number != null  and number != ''"> and number = #{number}</if>
+        </where>
+    </select>
+
+    <select id="selectOrderInfoById" parameterType="Long" resultMap="OrderInfoResult">
+        <include refid="selectOrderInfoVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectOrderInfoByNumber" resultType="com.bawei.mall.order.domain.OrderInfo">
+        select id, address_id, count, sum_price, pay_price, discount_price, create_time,
+               create_by, status, pay_deadline_time, pay_result, number from order_info
+        where number = #{number}
+    </select>
+
+
+    <insert id="insertOrderInfo" parameterType="OrderInfo">
+        insert into order_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="addressId != null">address_id,</if>
+            <if test="count != null">count,</if>
+            <if test="sumPrice != null">sum_price,</if>
+            <if test="payPrice != null">pay_price,</if>
+            <if test="discountPrice != null">discount_price,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="status != null">status,</if>
+            <if test="payDeadlineTime != null">pay_deadline_time,</if>
+            <if test="payResult != null">pay_result,</if>
+            <if test="number != null">number,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="addressId != null">#{addressId},</if>
+            <if test="count != null">#{count},</if>
+            <if test="sumPrice != null">#{sumPrice},</if>
+            <if test="payPrice != null">#{payPrice},</if>
+            <if test="discountPrice != null">#{discountPrice},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="status != null">#{status},</if>
+            <if test="payDeadlineTime != null">#{payDeadlineTime},</if>
+            <if test="payResult != null">#{payResult},</if>
+            <if test="number != null">#{number},</if>
+         </trim>
+    </insert>
+
+    <update id="updateOrderInfo" parameterType="OrderInfo">
+        update order_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="addressId != null">address_id = #{addressId},</if>
+            <if test="count != null">count = #{count},</if>
+            <if test="sumPrice != null">sum_price = #{sumPrice},</if>
+            <if test="payPrice != null">pay_price = #{payPrice},</if>
+            <if test="discountPrice != null">discount_price = #{discountPrice},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="payDeadlineTime != null">pay_deadline_time = #{payDeadlineTime},</if>
+            <if test="payResult != null">pay_result = #{payResult},</if>
+            <if test="number != null">number = #{number},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteOrderInfoById" parameterType="Long">
+        delete from order_info where id = #{id}
+    </delete>
+
+    <delete id="deleteOrderInfoByIds" parameterType="String">
+        delete from order_info where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

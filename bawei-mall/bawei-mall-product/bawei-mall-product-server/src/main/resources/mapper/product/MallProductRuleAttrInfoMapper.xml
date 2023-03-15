@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mall.product.mapper.MallProductRuleAttrInfoMapper">
+
+    <resultMap type="MallProductRuleAttrInfo" id="MallProductRuleAttrInfoResult">
+        <result property="id"    column="id"    />
+        <result property="ruleId"    column="rule_id"    />
+        <result property="name"    column="name"    />
+        <result property="attrValue"    column="attr_value"    />
+        <result property="revision"    column="revision"    />
+    </resultMap>
+
+    <sql id="selectMallProductRuleAttrInfoVo">
+        select id, rule_id, name, attr_value, revision from mall_product_rule_attr_info
+    </sql>
+
+    <select id="selectMallProductRuleAttrInfoList" parameterType="MallProductRuleAttrInfo" resultMap="MallProductRuleAttrInfoResult">
+        <include refid="selectMallProductRuleAttrInfoVo"/>
+        <where>
+        </where>
+    </select>
+
+    <select id="selectMallProductRuleAttrInfoById" parameterType="Long" resultMap="MallProductRuleAttrInfoResult">
+        <include refid="selectMallProductRuleAttrInfoVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMallProductRuleAttrInfo" parameterType="MallProductRuleAttrInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into mall_product_rule_attr_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ruleId != null">rule_id,</if>
+            <if test="name != null">name,</if>
+            <if test="attrValue != null">attr_value,</if>
+            <if test="revision != null">revision,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ruleId != null">#{ruleId},</if>
+            <if test="name != null">#{name},</if>
+            <if test="attrValue != null">#{attrValue},</if>
+            <if test="revision != null">#{revision},</if>
+         </trim>
+    </insert>
+    <insert id="bacthInsertRule" parameterType="RuleModel">
+        insert into mall_product_rule_attr_info(rule_id, name, attr_value)
+        values
+            <foreach collection="ruleModel.ruleList" index="index" item="ruleAttr" separator=",">
+                (#{ruleModel.ruleId}, #{ruleAttr.ruleType}, #{ruleAttr.ruleAttrStr})
+            </foreach>
+    </insert>
+
+    <update id="updateMallProductRuleAttrInfo" parameterType="MallProductRuleAttrInfo">
+        update mall_product_rule_attr_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ruleId != null">rule_id = #{ruleId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="attrValue != null">attr_value = #{attrValue},</if>
+            <if test="revision != null">revision = #{revision},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMallProductRuleAttrInfoById" parameterType="Long">
+        delete from mall_product_rule_attr_info where id = #{id}
+    </delete>
+
+    <delete id="deleteMallProductRuleAttrInfoByIds" parameterType="String">
+        delete from mall_product_rule_attr_info where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <delete id="deleteRuleAttrByRuleIds">
+        delete from mall_product_rule_attr_info where rule_id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
